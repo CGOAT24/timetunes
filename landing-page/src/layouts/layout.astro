@@ -1,0 +1,25 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/layout/navbar.svelte";
+import Footer from "../components/layout/footer.svelte";
+import { getLangFromUrl } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Timetunes</title>
+  </head>
+  <body>
+    <Navbar lang={lang} />
+    <article>
+      <slot />
+    </article>
+    <Footer lang={lang}/>
+  </body>
+</html>

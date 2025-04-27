@@ -1,0 +1,15 @@
+meta {
+  name: Start next round
+  type: http
+  seq: 4
+}
+
+patch {
+  url: http://127.0.0.1:{{port}}/api/game/:id/startRound
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}

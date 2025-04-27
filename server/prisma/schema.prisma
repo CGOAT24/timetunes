@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Game {
+  id           String @id @default(cuid())
+  playlistId   String
+  pin          String @unique
+  currentRound Int    @default(0)
+
+  players Player[]
+  rounds  Round[]
+  deck    Card[]
+}
+
+model Player {
+  id              String  @id @default(cuid())
+  username        String
+  profileURL      String
+  profilePictures Image[]
+  Game            Game?   @relation(fields: [gameId], references: [id])
+  gameId          String?
+}
+
+model Card {
+  id          String   @id @default(cuid())
+  trackId     String
+  albumCovers Image[]
+  orderRank   String
+  releaseDate DateTime
+  title       String
+  artist      String
+  Game        Game?    @relation(fields: [gameId], references: [id])
+  gameId      String?
+  hidden      Boolean  @default(true)
+}
+
+model Round {
+  id        String    @id @default(cuid())
+  trackId   String
+  startTime DateTime?
+  answers   Answer[]
+  Game      Game?     @relation(fields: [gameId], references: [id])
+  gameId    String?
+  index     Int
+}
+
+model Answer {
+  id        String   @id @default(cuid())
+  userId    String
+  position  String
+  points    Int      @default(0)
+  timestamp DateTime
+  roundId   String?
+  Round     Round?   @relation(fields: [roundId], references: [id])
+}
+
+model Image {
+  id       String  @id @default(cuid())
+  url      String
+  height   Int
+  width    Int
+  Player   Player? @relation(fields: [playerId], references: [id])
+  playerId String?
+  Card     Card?   @relation(fields: [cardId], references: [id])
+  cardId   String?
+}

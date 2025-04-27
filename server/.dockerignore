@@ -1,0 +1,16 @@
+node_modules
+.idea
+.git
+utils/
+tests/
+apiCollection/
+Dockerfile*
+docker-compose*
+.dockerignore
+.gitignore
+README.md
+.vscode
+helm-charts
+biome.json
+lefthook.yml
+tsconfig.json

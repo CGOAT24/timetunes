@@ -1,0 +1,15 @@
+meta {
+  name: Join game
+  type: http
+  seq: 2
+}
+
+patch {
+  url: http://127.0.0.1:{{port}}/api/game/:pin
+  body: none
+  auth: inherit
+}
+
+params:path {
+  pin: 
+}

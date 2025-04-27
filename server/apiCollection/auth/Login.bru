@@ -1,0 +1,15 @@
+meta {
+  name: Login
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://{{host}}:{{port}}/api/auth
+  body: json
+  auth: none
+}
+
+vars:post-response {
+  access_token: res.body.slice(1, -1)
+}

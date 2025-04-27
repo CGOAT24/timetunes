@@ -1,0 +1,11 @@
+meta {
+  name: Create game
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://{{host}}:{{port}}/api/game
+  body: json
+  auth: inherit
+}

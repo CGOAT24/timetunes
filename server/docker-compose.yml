@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: postgresql
+    environment:
+      POSTGRES_USER: "${DB_USER}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      POSTGRES_DB: "${DB_NAME}"
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    restart: unless-stopped
+  broker:
+    image: rabbitmq:alpine
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: "${BROKER_USER}"
+      RABBITMQ_DEFAULT_PASS: "${BROKER_PASSWORD}"
+    ports:
+      - "${BROKER_PORT}:5672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - app-network
+    restart: unless-stopped
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "${HTTP_PORT}:${HTTP_PORT}"
+    depends_on:
+      - broker
+      - db
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,6 +1,0 @@
-[submodule "mobile"]
-	path = mobile
-	url = https://github.com/LoukaG/TimeTunes.git
-[submodule "server"]
-	path = server
-	url = https://github.com/cgoat24/timetunes

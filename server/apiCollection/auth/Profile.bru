@@ -1,0 +1,11 @@
+meta {
+  name: Profile
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://{{host}}:{{port}}/api/auth/profile
+  body: none
+  auth: inherit
+}

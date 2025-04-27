@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@font-face {
+    font-family: MontserratAlt1;
+    src: url("/fonts/MontserratAlt1-Bold.otf") format("opentype");
+}
+
+@utility font-MontserratAlt1 {
+    font-family: MontserratAlt1, serif;
+}

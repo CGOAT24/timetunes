@@ -1,0 +1,4 @@
+# deps
+node_modules/
+.env
+apiCollection/collection.bru
