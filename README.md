@@ -1,6 +1,8 @@
 # 🎵 TimeTunes
 
 **TimeTunes** est une application mobile multijoueur où les joueurs doivent deviner la date de sortie de chansons en les plaçant correctement sur une ligne du temps. Inspirée du jeu de cartes HITSTER, TimeTunes va plus loin en ajoutant la personnalisation, le jeu à distance et l'intégration de Spotify.
+<br><br>
+Ce projet a été réalisé dans le cadre du cours IFT592/IFT692 de l'université de Sherbrooke par [Chad Gauthier](https://github.com/CGOAT24) et [Louka Gauthier](https://github.com/LoukaG). 
 
 ---
 
